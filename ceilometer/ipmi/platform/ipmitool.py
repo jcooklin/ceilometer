@@ -124,7 +124,8 @@ def execute_ipmi_cmd(template=None):
             args.extend(command.split(" "))
             try:
                 (out, __) = utils.execute(*args, run_as_root=True)
-            except processutils.ProcessExecutionError:
+            except processutils.ProcessExecutionError as err:
+                #import ipdb;ipdb.set_trace()
                 raise ipmiexcept.IPMIException(_("running ipmitool failure"))
             return _parse_output(out, template)
         return _execute

@@ -270,19 +270,19 @@ class NodeManager(object):
         return self._read_inlet_temperature() if self.nm_version > 0 else {}
 
     def read_outlet_temperature(self):
-        return self._read_outlet_temperature() if self.nm_version >= 5 else {}
+        return self._read_outlet_temperature() if self.nm_version >= 3 else {}
 
     def read_airflow(self):
         # only available after NM 3.0
-        return self._read_airflow() if self.nm_version >= 5 else {}
+        return self._read_airflow() if self.nm_version >= 3 else {}
 
     def read_cups_utilization(self):
         # only available after NM 3.0
-        return self._read_cups_utilization() if self.nm_version >= 5 else {}
+        return self._read_cups_utilization() if self.nm_version >= 3 else {}
 
     def read_cups_index(self):
         # only available after NM 3.0
-        return self._read_cups_index() if self.nm_version >= 5 else {}
+        return self._read_cups_index() if self.nm_version >= 3 else {}
 
     def init_node_manager(self):
         if self._init_sensor_agent_process()['ret'] == ['01']:
